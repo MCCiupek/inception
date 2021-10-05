@@ -1,5 +1,12 @@
 # inception
 
+## Objectives
+* System administration
+
+## Skills
+* Rigor
+* Network & system administration
+
 ![image](https://user-images.githubusercontent.com/51337012/136004771-f155cfa6-385e-4d5c-8c1c-a7fdd08df060.png)
 
 ## Containerization
