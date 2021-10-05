@@ -9,7 +9,9 @@ This project aims to broaden your knowledge of system administration by using Do
 * Network & system administration
 
 ##
-![image](https://user-images.githubusercontent.com/51337012/136004771-f155cfa6-385e-4d5c-8c1c-a7fdd08df060.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/51337012/136004771-f155cfa6-385e-4d5c-8c1c-a7fdd08df060.png" />
+ </p>
 
 ## Docker
 **Docker** is a software that can package your application, its dependencies, system tools, system libraries and settings in a single comprehensive **virtual container**. This combined package, which contains everything that’s needed to run your application, is called a **Docker container image**. This image is a **standalone, executable software package** which runs reliably on any server — Linux, Windows, macOS, public cloud or private cloud. Also, these images can be used to run the application as an isolated process in user space.
@@ -43,6 +45,13 @@ List network commands | ``docker network help`` | listing the available network 
 Removing a network | ``docker network rm <network>`` | remove the network *network*
 Connecting to a Docker network | ``docker container run -it –net=<network> nginx`` | When you create a Docker network, by default it is connected to the bridge network. Use this command to connect to another network when you run the container
 Obtaining container ports | ``docker port <container_name/id>`` | get the container’s port
+
+## Overview of the Installation Process
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/51337012/136026821-68bcafc0-a3d5-469d-a46f-fb4fe37b9eff.png" />
+ </p>
+
 ## Sources
 
 * [Introduction to Docker Networking: Networking Basics, Workflow, Networking Commands](https://medium.com/@upGrad/introduction-to-docker-networking-workflow-networking-basics-networking-commands-5a62e745afad)
