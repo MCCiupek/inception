@@ -1,5 +1,4 @@
-version: "3.9"
-
+entrypoint: entry_point.sh
 services:
   mysql:
     image: mariadb
@@ -36,3 +35,4 @@ services:
       - 8080:80
     links:
       - wordpress
+  
