@@ -11,9 +11,8 @@ This project aims to broaden your knowledge of system administration by using Do
 ##
 ![image](https://user-images.githubusercontent.com/51337012/136004771-f155cfa6-385e-4d5c-8c1c-a7fdd08df060.png)
 
-## Containerization
-
-**Containerization** is the process by which a software application is packed with all its required dependencies such as libraries, modules and OS. This makes the software easily executable in any environment.
+## Docker
+**Docker** is a software that can package your application, its dependencies, system tools, system libraries and settings in a single comprehensive **virtual container**. This combined package, which contains everything that’s needed to run your application, is called a **Docker container image**. This image is a **standalone, executable software package** which runs reliably on any server — Linux, Windows, macOS, public cloud or private cloud. Also, these images can be used to run the application as an isolated process in user space.
 
 ## Docker Workflow
 
