@@ -2,10 +2,10 @@ version: '3.4'
 
 volumes:
   mysql_volume:
-  	name: ${MYSQL_VOL_ID}
-	driver: local
+    name: ${MYSQL_VOL_ID}
+    driver: local
   wp_volume:
-  	name: ${WP_VOL_ID}
+    name: ${WP_VOL_ID}
 
 services:
   mysql:
