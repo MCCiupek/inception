@@ -1,38 +1,59 @@
-entrypoint: entry_point.sh
+version: '3.4'
+
+volumes:
+  mysql_volume:
+  	name: ${MYSQL_VOL_ID}
+	driver: local
+  wp_volume:
+  	name: ${WP_VOL_ID}
+
 services:
   mysql:
     image: mariadb
+    container_name: mariadb
+    env_file: .env
+    build:
+      context: ./requirement/mariadb
+      dockerfile: ./requirements/mariadb/Dockerfile
+    ports:
+      - "3306:3306"
     volumes:
-      - /data/mysql:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root42
-      MYSQL_DATABASE: db_name
-      MYSQL_USER: user42
-      MYSQL_PASSWORD: user42
+      - mysql_volume:/var/lib/mysql
+      - ./requirements/mariadb/conf/my.cnf:/etc/mysql/conf
     restart: always
+    networks:
+      - app-network
+
   wordpress:
-    image: wordpress:php7.3-fpm-alpine
+    image: wordpress:php7.4-fpm
+    container_name: wordpress
     volumes:
-      - /data/html:/var/www/html
+      - wp_volume:/var/www
+      - ./requirements/wordpress/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     depends_on:
       - mysql
-    environment:
-      WORDPRESS_DB_HOST: mysql
-      MYSQL_ROOT_PASSWORD: root42
-      WORDPRESS_DB_NAME: db_name
-      WORDPRESS_DB_USER: user42
-      WORDPRESS_DB_PASSWORD: user42
-      WORDPRESS_TABLE_PREFIX: wp_
     links:
       - mysql
+    ports:
+      - "9000:9000"
+    working_dir: /var/www
     restart: always
+    networks:
+      - app-network
+
   nginx:
     image: nginx:debian
+    container_name: nginx
     volumes:
-      - nginx:/etc/nginx/conf.d
-      - /data/html:/var/www/html
+      - wp_volume:/var/www
+      - ./requirements/nginx/conf/nginx.conf:/etc/nginx/conf
     ports:
-      - 8080:80
-    links:
-      - wordpress
-  
+      - "80:80"
+      - "443:443"
+    restart: always
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
