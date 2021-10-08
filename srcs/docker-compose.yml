@@ -13,7 +13,7 @@ services:
     container_name: mariadb
     env_file: .env
     build:
-      context: ./requirement/mariadb
+      context: ./requirements/mariadb
       dockerfile: ./requirements/mariadb/Dockerfile
     ports:
       - "3306:3306"
@@ -27,6 +27,9 @@ services:
   wordpress:
     image: wordpress:php7.4-fpm
     container_name: wordpress
+     build:
+      context: ./requirements/wordpress
+      dockerfile: ./requirements/wordpress/Dockerfile
     volumes:
       - wp_volume:/var/www
       - ./requirements/wordpress/php/local.ini:/usr/local/etc/php/conf.d/local.ini
@@ -44,6 +47,9 @@ services:
   nginx:
     image: nginx:debian
     container_name: nginx
+    build:
+      context: ./requirements/nginx
+      dockerfile: ./requirements/nginx/Dockerfile
     volumes:
       - wp_volume:/var/www
       - ./requirements/nginx/conf/nginx.conf:/etc/nginx/conf
