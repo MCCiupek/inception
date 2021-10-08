@@ -16,6 +16,10 @@ This project aims to broaden your knowledge of system administration by using Do
 ## Docker
 **Docker** is a software that can package your application, its dependencies, system tools, system libraries and settings in a single comprehensive **virtual container**. This combined package, which contains everything that’s needed to run your application, is called a **Docker container image**. This image is a **standalone, executable software package** which runs reliably on any server — Linux, Windows, macOS, public cloud or private cloud. Also, these images can be used to run the application as an isolated process in user space.
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/51337012/136520110-eef3e002-04c8-4b7f-b438-6a32d299c26f.png" />
+ </p>
+
 ## Docker Workflow
 
 The application or the project code is written in a **Docker file**. This file contains the application requirements and dependencies. This file produces a **Docker image** that is used later on to execute the code in the file.
