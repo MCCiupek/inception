@@ -25,9 +25,9 @@ services:
       - app-network
 
   wordpress:
-    image: wordpress:php7.4-fpm
+    image: wordpress
     container_name: wordpress
-     build:
+    build:
       context: ./requirements/wordpress
       dockerfile: ./requirements/wordpress/Dockerfile
     volumes:
@@ -45,7 +45,7 @@ services:
       - app-network
 
   nginx:
-    image: nginx:debian
+    image: nginx
     container_name: nginx
     build:
       context: ./requirements/nginx
