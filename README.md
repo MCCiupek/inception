@@ -58,6 +58,7 @@ Obtaining container ports | ``docker port <container_name/id>`` | get the contai
 
 ## Sources
 
+* [Docker Basics](https://vsupalov.com/6-docker-basics/)
 * [Introduction to Docker Networking: Networking Basics, Workflow, Networking Commands](https://medium.com/@upGrad/introduction-to-docker-networking-workflow-networking-basics-networking-commands-5a62e745afad)
 * [WordPress Deployment with NGINX, PHP-FPM and MariaDB using Docker Compose](https://medium.com/swlh/wordpress-deployment-with-nginx-php-fpm-and-mariadb-using-docker-compose-55f59e5c1a)
 * [How to Build Docker Images with Dockerfile](https://linuxize.com/post/how-to-build-docker-images-with-dockerfile/)
