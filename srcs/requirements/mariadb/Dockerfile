@@ -6,7 +6,7 @@
 # FROM dockerfile/ubuntu
 FROM debian
 
-COPY ./tools/db.sql /tmp/config/
+COPY ./tools/db.sql /tmp/
 
 # Install MariaDB.
 RUN \
