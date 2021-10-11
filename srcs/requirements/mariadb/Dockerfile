@@ -18,7 +18,10 @@ RUN \
 RUN echo "mysqld_safe &" > /tmp/config
 RUN echo "mysqladmin --silent --wait=30 ping || exit 1" >> /tmp/config
 #RUN echo "mysql -e 'GRANT ALL PRIVILEGES ON *.* TO \"root\"@\"%\" WITH GRANT OPTION; FLUSH PRIVILEGES;'" >> /tmp/config
-RUN echo "mysql -e '" tools/db.sql "'" >> /tmp/config
+#RUN sh tools/config.sh
+RUN echo "mysql -e '" >> /tmp/config
+RUN cat ./tools/db.sql >> /tmp/config
+RUN echo "'" >> /tmp/config
 RUN bash /tmp/config
 RUN rm -f /tmp/config
 
