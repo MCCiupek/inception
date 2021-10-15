@@ -37,10 +37,9 @@ RUN 	sed -i "/listen =/d" /etc/php/7.3/fpm/pool.d/www.conf
 RUN 	echo "listen = 9000" >> /etc/php/7.3/fpm/pool.d/www.conf
 RUN 	mkdir -p /run/php/
 
-# Expose ports
 ENTRYPOINT ["/wp_start.sh"]
 
-# Ports
+# Expose ports
 EXPOSE 9000
 
 # Define default command
