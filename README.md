@@ -76,7 +76,7 @@ Get the latest version of docker-compose to be able to use docker-compose with a
   ````
 * Install newest version
   ```
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Darwin-x86_64" -o /usr/local/bin/docker-compose
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
   ```
 
@@ -86,11 +86,15 @@ Stop the nginx and mysql service
   sudo service mysql stop
 ```
 
+## Errors
+
 If you get the following error message : Docker compose up : error while fecthing server API version
 ```
   sudo gpasswd -a $USER docker
   newgrp docker
-```  
+```
+
+"Cannot start service nginx: unable to find user www:no matching entries in passwd file" --> ???
   
 ## Sources
 
