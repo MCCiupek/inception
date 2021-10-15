@@ -1,5 +1,6 @@
 # inception
 This project aims to broaden your knowledge of system administration by using Docker. You will virtualize several Docker images, creating them in your new personal virtual machine.
+The objective of inception is to use docker-compose to create a LEMP stack with Wordpress. 
 
 ## Objectives
 * System administration
@@ -56,6 +57,41 @@ Obtaining container ports | ``docker port <container_name/id>`` | get the contai
   <img src="https://user-images.githubusercontent.com/51337012/136026821-68bcafc0-a3d5-469d-a46f-fb4fe37b9eff.png" />
  </p>
 
+## Set up VM environment
+
+Add /etc/hosts your server name to the list of accepted hosts: 127.0.0.1 <login>.42.fr
+
+Create a new user (names after your login) and assign it to diffrent groups:
+```
+  sudo adduser <login>
+  sudo usermode -aG sudo <login>
+  sudo usermode -aG docker <login>
+```
+
+Get the latest version of docker-compose to be able to use docker-compose with a Makefile:
+* Delete previous version :
+  ```
+    sudo apt-get remove docker-compose
+    sudo rm -f /usr/local/bin/docker-compose
+  ````
+* Install newest version
+  ```
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Darwin-x86_64" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+  ```
+
+Stop the nginx and mysql service
+```
+  sudo service nginx stop
+  sudo service mysql stop
+```
+
+If you get the following error message : Docker compose up : error while fecthing server API version
+```
+  sudo gpasswd -a $USER docker
+  newgrp docker
+```  
+  
 ## Sources
 
 * [Docker Basics](https://vsupalov.com/6-docker-basics/)
