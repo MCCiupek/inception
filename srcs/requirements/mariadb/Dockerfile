@@ -29,7 +29,7 @@ COPY    ./conf/db.sql /usr/local/bin/
 #RUN			chmod +rw /etc/mysql/my.cnf
 
 # Start server
-ENTRYPOINT	["create_db.sh"]
+ENTRYPOINT	["/usr/local/bin/create_db.sh"]
 
 # Launch mariadb
 CMD ["mysqld", "--bind-address=0.0.0.0"]
