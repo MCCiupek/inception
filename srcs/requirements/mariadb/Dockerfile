@@ -20,13 +20,14 @@ RUN \
 
 # Copy config files
 COPY		./tools/create_db.sh /usr/local/bin/
-RUN			chmod +x /usr/local/bin/
 #COPY		./tools/start.sh /start.sh
 #RUN			chmod +x /start.sh
 
 COPY    ./conf/db.sql /usr/local/bin/
 #COPY		./conf/my.cnf /etc/mysql/my.cnf
 #RUN			chmod +rw /etc/mysql/my.cnf
+
+RUN			chmod +755 /usr/local/bin/
 
 # Start server
 ENTRYPOINT	["/usr/local/bin/create_db.sh"]
