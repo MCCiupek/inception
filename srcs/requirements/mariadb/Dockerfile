@@ -5,31 +5,20 @@
 # Pull base image
 FROM debian:buster
 
-COPY ./tools/db.sql /tmp/
+# update the software repository
+RUN 		apt-get update && apt-get -y upgrade
 
-# Install MariaDB
-RUN \
-  apt-get update -y \
-  && apt-get install -y --no-install-recommends gnupg \
-#  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0xcbcb082a1bb943db && \
-#  echo "deb http://mariadb.mirror.iweb.com/repo/10.0/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/mariadb.list && \
-  && DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server \
-  && rm -rf /var/lib/apt/lists/* \
-  && sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf
-RUN echo "mysqld_safe &" > /tmp/config
-RUN echo "mysqladmin --silent --wait=30 ping || exit 1" >> /tmp/config
-RUN cat /tmp/db.sql >> /tmp/config
-RUN bash /tmp/config
-RUN rm -f /tmp/config
+# install maria-db (database)
+RUN 		apt-get install -y mariadb-server
 
-# Define mountable directories
-VOLUME ["/etc/mysql", "/var/lib/mysql"]
+# Copy config files
+COPY		./tools/start.sh /start.sh
+RUN			chmod +x /start.sh
+COPY		./conf/my.cnf /etc/mysql/my.cnf
+RUN			chmod +rw /etc/mysql/my.cnf
 
-# Define working directory.
-WORKDIR /data
-
-# Define default command
-CMD ["mysqld_safe"]
+# Start server
+ENTRYPOINT	["/start.sh"]
 
 # Expose ports
 EXPOSE 3306

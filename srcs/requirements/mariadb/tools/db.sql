@@ -1,5 +1,0 @@
-mysql -e "CREATE DATABASE '${MYSQL_DATABASE}';"
-mysql -e "CREATE USER '${MYSQL_USER}'@'%';"
-mysql -e "SET password FOR '${MYSQL_USER}'@'%' = password('${MYSQL_PASSWORD}');"
-mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
-mysql -e "FLUSH PRIVILEGES;"
