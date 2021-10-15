@@ -26,6 +26,8 @@ services:
   wordpress:
     image: wordpress
     container_name: wordpress
+    depends_on:
+      - mysql
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
@@ -46,6 +48,8 @@ services:
   nginx:
     image: nginx
     container_name: nginx
+    depends_on: 
+      - wordpress
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
