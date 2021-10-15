@@ -94,7 +94,8 @@ If you get the following error message : Docker compose up : error while fecthin
   newgrp docker
 ```
 
-"Cannot start service nginx: unable to find user www:no matching entries in passwd file" --> ???
+"Cannot start service nginx: unable to find user www:no matching entries in passwd file": launch with 
+``docker-compose up --build``
   
 ## Sources
 
