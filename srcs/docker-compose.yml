@@ -26,8 +26,8 @@ services:
   wordpress:
     image: wordpress
     container_name: wordpress
-    #depends_on:
-    #  - mysql
+    depends_on:
+      - mysql
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
@@ -48,8 +48,8 @@ services:
   nginx:
     image: nginx
     container_name: nginx
-    #depends_on: 
-    #  - wordpress
+    depends_on: 
+      - wordpress
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
@@ -57,7 +57,6 @@ services:
       - wp_volume:/var/www
       - ./requirements/nginx/conf/nginx.conf:/etc/nginx/conf
     ports:
-      - "80:80"
       - "443:443"
     restart: on-failure
     networks:

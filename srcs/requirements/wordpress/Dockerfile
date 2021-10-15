@@ -15,32 +15,22 @@ RUN apt-get install -y \
     php-mysql \
     tar
 
-# install wordpress
-ADD https://wordpress.org/latest.tar.gz /tmp/latest.tar.gz
+# Copy config file
+COPY ./conf/www.conf /var/www/html/
 
-RUN 	cd /tmp \
-		&& tar xzvf latest.tar.gz \
-		&& rm latest.tar.gz \
-		&& mkdir /var/www \
-		&& mv -f wordpress /var/www/ \
-		&& chmod 755 -R /var/www/wordpress \
-		&& chown -R www-data:www-data /var/www/wordpress
+# Create the folder to enable php start
+RUN mkdir -p /run/php
 
-RUN 	rm -rf /var/www/wordpress/wp-config-sample.php
-
-COPY	./conf/wp-config.php /var/www/wordpress
-COPY	./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
-COPY 	./tools/start.sh /wp_start.sh
-
-RUN 	chmod +x /wp_start.sh
-RUN 	sed -i "/listen =/d" /etc/php/7.3/fpm/pool.d/www.conf
-RUN 	echo "listen = 9000" >> /etc/php/7.3/fpm/pool.d/www.conf
-RUN 	mkdir -p /run/php/
-
-ENTRYPOINT ["/wp_start.sh"]
+# Launch wordpress installation
+COPY ./tools/start.sh /usr/local/bin/
+ENTRYPOINT ["start.sh"]
 
 # Expose ports
 EXPOSE 9000
 
+# Define working directory
+WORKDIR /var/www/
+
 # Define default command
-CMD ["bash", "/wp_start.sh"]
+#CMD ["bash", "/wp_start.sh"]
+CMD ["/usr/sbin/php-fpm7.3", "-F"]
