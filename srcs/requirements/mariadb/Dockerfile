@@ -27,7 +27,7 @@ COPY    ./conf/db.sql /usr/local/bin/
 #COPY		./conf/my.cnf /etc/mysql/my.cnf
 #RUN			chmod +rw /etc/mysql/my.cnf
 
-RUN			chmod +755 /usr/local/bin/
+RUN			chmod +777 /usr/local/bin/
 
 # Start server
 ENTRYPOINT	["/usr/local/bin/create_db.sh"]
