@@ -59,13 +59,13 @@ Obtaining container ports | ``docker port <container_name/id>`` | get the contai
 
 ## Set up VM environment
 
-Add /etc/hosts your server name to the list of accepted hosts: 127.0.0.1 <login>.42.fr
+Add /etc/hosts your server name to the list of accepted hosts: 127.0.0.1 \<login\>.42.fr
 
 Create a new user (names after your login) and assign it to diffrent groups:
 ```
   sudo adduser <login>
-  sudo usermode -aG sudo <login>
-  sudo usermode -aG docker <login>
+  sudo usermod -aG sudo <login>
+  sudo usermod -aG docker <login>
 ```
 
 Get the latest version of docker-compose to be able to use docker-compose with a Makefile:
