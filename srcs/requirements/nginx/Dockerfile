@@ -17,7 +17,8 @@ RUN		apt-get install -y nginx wget
 COPY	conf/new.conf /etc/nginx/nginx.conf
 COPY	conf/nginx.conf /etc/nginx/sites-available/site.conf
 RUN		ln -s /etc/nginx/sites-available/site.conf /etc/nginx/sites-enabled/site.conf
-RUN		chown -R www-data:www-data /var/www
+RUN		chown -R www:www /var/www
+#RUN		chown -R www-data:www-data /var/www
 
 # SSL certificates creation
 RUN 	openssl req -x509 -nodes -days 1 -newkey rsa:2048 		\
