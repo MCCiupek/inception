@@ -12,8 +12,8 @@ RUN		apt-get update && apt-get -y upgrade
 
 # install nginx
 RUN		apt-get install -y \
-            nginx 
-            wget 
+            nginx \
+            wget \
             openssl
 
 # nginx config
