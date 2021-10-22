@@ -13,15 +13,15 @@ then
 else
 
     # Set root option so that connexion without root password is not possible
-    mysql_secure_installation <<_EOF_
-Y
-root42
-root42
-Y
-n
-Y
-Y
-_EOF_
+#     mysql_secure_installation <<_EOF_
+# Y
+# root42
+# root42
+# Y
+# n
+# Y
+# Y
+# _EOF_
 
     #Add a root user on 127.0.0.1 to allow remote connexion
     echo "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD'; FLUSH PRIVILEGES;" | mysql -uroot
