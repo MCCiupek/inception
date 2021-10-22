@@ -23,6 +23,7 @@ RUN mkdir -p /run/php
 
 # Launch wordpress installation
 COPY ./tools/start.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/start.sh
 ENTRYPOINT ["start.sh"]
 
 # Expose ports
