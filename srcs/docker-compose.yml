@@ -19,7 +19,7 @@ services:
     volumes:
       - mysql_volume:/var/lib/mysql
       - ./requirements/mariadb/conf/my.cnf:/etc/mysql/conf
-    restart: always
+    restart: on-failure
     networks:
       - localhost
 

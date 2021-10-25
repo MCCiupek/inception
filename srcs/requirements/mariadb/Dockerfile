@@ -19,7 +19,8 @@ COPY ./conf/mariadb.sql /
 RUN service mysql start && mysql < mariadb.sql
 RUN rm -f mariadb.sql
 
-CMD /usr/bin/mysqld_safe
+# CMD /usr/bin/mysqld_safe
+CMD ["mysqld", "--bind-address=0.0.0.0"]
 
 # purge and re-create /var/lib/mysql with correct ownership
 # RUN \
