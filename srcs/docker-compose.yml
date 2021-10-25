@@ -19,9 +19,9 @@ services:
     volumes:
       - mysql_volume:/var/lib/mysql
       - ./requirements/mariadb/conf/my.cnf:/etc/mysql/conf
-    restart: on-failure
+    restart: always
     networks:
-      - app-network
+      - localhost
 
   wordpress:
     image: wordpress
@@ -43,7 +43,7 @@ services:
     working_dir: /var/www
     restart: on-failure
     networks:
-      - app-network
+      - localhost
 
   nginx:
     image: nginx
@@ -60,8 +60,8 @@ services:
       - "443:443"
     restart: on-failure
     networks:
-      - app-network
+      - localhost
 
 networks:
-  app-network:
-    driver: bridge
+  localhost:
+    name: inet
