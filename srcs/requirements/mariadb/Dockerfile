@@ -13,19 +13,20 @@ RUN 		apt-get install -y \
   mariadb-server \
   mariadb-client
 
-RUN \
-  rm -rf /var/lib/apt/lists/* \
-  && mkdir -p /var/run/mysqld \
-  && chown -R mysql:mysql /var/run/mysqld \
-  && chmod 777 /var/run/mysqld
+# COPY ./conf/mariadb.cnf /etc/mysql/mariadb.conf.d/
+# COPY ./conf/mariadb.sql /
 
-COPY ./conf/mariadb.cnf /etc/mysql/mariadb.conf.d/
-COPY ./conf/mariadb.sql /
+# RUN service mysql start && mysql < mariadb.sql
+# RUN rm -f mariadb.sql
 
-RUN service mysql start && mysql < mariadb.sql
-RUN rm -f mariadb.sql
+COPY tools/create_db.sh /bin/
+COPY conf/my.cnf /etc/mysql/my.cnf
 
-CMD [ "mysqld_safe" ]
+RUN chmod 775 /bin/create_db.sh
+RUN chmod 775 /etc/mysql/my.cnf
+RUN chmod 775 /var/lib/mysql
+
+ENTRYPOINT [ "bin/create_db.sh" ]
 # CMD ["mysqld", "--bind-address=0.0.0.0"]
 
 # purge and re-create /var/lib/mysql with correct ownership

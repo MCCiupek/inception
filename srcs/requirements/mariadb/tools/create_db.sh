@@ -1,40 +1,27 @@
-#!/bin/sh
+#!/bin/bash
 
-mysql_install_db
+echo "Database initialization"
 
-/etc/init.d/mysql start
+mysqld_safe &
+sleep 2
 
-#Check if the database exists
+echo "wait 15s"
+sleep 15
 
-if [ -d "/var/lib/mysql/$MYSQL_DATABASE" ]
-then 
+echo "ajout de la db"
+sleep 2
+mysql -e "CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};"
+mysql -e "CREATE USER IF NOT EXISTS ${WP_USER}@'%' IDENTIFIED BY '${WP_USER_PASSWORD}';"
+mysql -e "CREATE USER IF NOT EXISTS ${WP_ADMIN}@'%' IDENTIFIED BY '${WP_ADMIN_PASSWORD}';"
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO ${WP_ADMIN}@'%' IDENTIFIED BY '${WP_ADMIN_PASSWORD}';"
+mysql -e "GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO ${WP_USER}@'%';"
+mysql -e "FLUSH PRIVILEGES;"
 
-	echo "Database already exists"
-else
+echo "database shutdown"
+sleep 2
+mysqladmin shutdown
 
-    # Set root option so that connexion without root password is not possible
-    mysql_secure_installation <<_EOF_
+echo "database restarting"
+sleep 2
 
-Y
-root42
-root42
-Y
-n
-Y
-Y
-_EOF_
-
-    #Add a root user on 127.0.0.1 to allow remote connexion
-    echo "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD'; FLUSH PRIVILEGES;" | mysql -uroot
-
-    #Create database and user for wordpress
-    echo "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE; GRANT ALL ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD'; FLUSH PRIVILEGES;" | mysql -uroot
-
-    #Import database
-    mysql -uroot -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE < /usr/local/bin/db.sql
-
-fi
-
-/etc/init.d/mysql stop
-
-exec "$@"
+exec mysqld -u root
