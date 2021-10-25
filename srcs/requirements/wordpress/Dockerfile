@@ -18,7 +18,7 @@ RUN apt-get install -y \
 
 # Copy config file
 #COPY ./conf/www.conf /var/www/www.conf
-COPY conf /var/www/
+COPY ./conf /var/www/
 
 # Create the folder to enable php start
 RUN mkdir -p /run/php
