@@ -13,6 +13,7 @@ RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y \
     php-fpm \
     php-mysql \
+    wget \
     tar
 
 # Copy config file
