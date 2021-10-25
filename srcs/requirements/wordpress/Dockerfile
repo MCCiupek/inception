@@ -33,7 +33,8 @@ RUN mkdir -p /run/php
 COPY ./tools/start.sh /usr/local/bin/
 RUN chmod 777 /usr/local/bin/start.sh
 
-ENTRYPOINT ["start.sh"]
+#ENTRYPOINT ["start.sh"]
+CMD ["start.sh"]
 
 # Expose ports
 EXPOSE 9000
