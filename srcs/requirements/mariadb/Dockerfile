@@ -19,6 +19,13 @@ RUN 		apt-get install -y \
 # RUN service mysql start && mysql < mariadb.sql
 # RUN rm -f mariadb.sql
 
+# purge and re-create /var/lib/mysql with correct ownership
+RUN \
+  rm -rf /var/lib/apt/lists/* \
+  && mkdir -p /var/run/mysqld \
+  && chown -R mysql:mysql /var/run/mysqld \
+  && chmod 777 /var/run/mysqld
+
 COPY tools/create_db.sh /bin/
 COPY conf/my.cnf /etc/mysql/my.cnf
 
