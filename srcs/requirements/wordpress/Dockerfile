@@ -18,7 +18,7 @@ RUN apt-get install -y \
 
 # Copy config file
 #COPY ./conf/www.conf /var/www/www.conf
-COPY ./conf/www.conf .
+COPY conf /var/www/
 
 # Create the folder to enable php start
 RUN mkdir -p /run/php
@@ -26,6 +26,7 @@ RUN mkdir -p /run/php
 # Launch wordpress installation
 COPY ./tools/start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start.sh
+
 ENTRYPOINT ["start.sh"]
 
 # Expose ports
