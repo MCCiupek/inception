@@ -16,6 +16,9 @@ RUN apt-get install -y \
     wget \
     tar
 
+# Define working directory
+WORKDIR /var/www/
+
 # Copy config file
 COPY . .
 
@@ -34,9 +37,6 @@ ENTRYPOINT ["start.sh"]
 
 # Expose ports
 EXPOSE 9000
-
-# Define working directory
-WORKDIR /var/www/
 
 # Define default command
 #CMD ["bash", "/wp_start.sh"]
