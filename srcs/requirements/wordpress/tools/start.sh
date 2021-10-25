@@ -19,7 +19,9 @@
 
 	rm -rf /etc/php/7.3/fpm/pool.d/www.conf
     pwd
-	mv /var/www/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+    ls
+	#mv /var/www/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+    mv www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 	#Inport env variables in the config file
 	cd /var/www/wordpress
