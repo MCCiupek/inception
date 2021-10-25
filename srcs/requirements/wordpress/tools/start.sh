@@ -9,7 +9,7 @@ else
 	tar -xzvf latest.tar.gz
 	rm -rf latest.tar.gz
     #mkdir /var/www
-    mv -f wordpress /var/www/wordpress
+    mv -f wordpress /var/www/
     chmod 755 -R /var/www/wordpress
     chown -R www-data:www-data /var/www/wordpress
 
