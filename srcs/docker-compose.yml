@@ -3,8 +3,16 @@ version: '3'
 volumes:
   mysql_volume:
     driver: local
+    driver_opts:
+      o: bind
+      type: volume
+      device: /home/user42/data/database
   wp_volume:
     driver: local
+    driver_opts:
+      o: bind
+      type: volume
+      device: /home/user42/data/wp
 
 services:
   mysql:
