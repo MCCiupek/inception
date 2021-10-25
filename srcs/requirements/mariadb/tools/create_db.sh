@@ -10,8 +10,8 @@ sleep 15
 
 echo "ajout de la db"
 
-echo "------ cat sock -------"
-cat /var/run/mysqld/mysqld.sock
+echo "------ touch socket -------"
+touch /var/run/mysqld/mysqld.sock
 echo "----------------"
 
 sleep 2
