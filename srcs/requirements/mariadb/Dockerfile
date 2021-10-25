@@ -30,7 +30,6 @@ RUN			chmod +x /usr/local/bin/db.sql
 RUN			chmod 777 /usr/local/bin/create_db.sh
 
 RUN			chmod -R 755 /var/lib/mysql/
-RUN			chmod -R 755 /usr/sbin/mysqld/
 
 # Start server
 ENTRYPOINT	["/usr/local/bin/create_db.sh"]
