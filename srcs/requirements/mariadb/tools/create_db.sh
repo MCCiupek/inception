@@ -10,9 +10,9 @@ sleep 15
 
 echo "ajout de la db"
 
-echo "------ touch socket -------"
-touch /var/run/mysqld/mysqld.sock
-chmod -R 775 /var/run/mysqld/mysqld.sock
+echo "----------------"
+echo "PID"
+ps -A | grep "sql"
 echo "----------------"
 
 sleep 2
