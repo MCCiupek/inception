@@ -18,7 +18,7 @@ services:
       - "3306:3306"
     volumes:
       - mysql_volume:/var/lib/mysql
-      - ./requirements/mariadb/conf/my.cnf:/etc/mysql/conf
+      - ./requirements/mariadb/conf/mariadb.cnf:/etc/mysql/conf
     restart: on-failure
     networks:
       - localhost
