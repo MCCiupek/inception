@@ -14,19 +14,19 @@ else
     chown -R www-data:www-data /var/www/wordpress
 
 	#Update configuration file
-    rm -rf /var/www/wordpress/wp-config-sample.php
-    mv ../conf/wp-config.php /var/www/wordpress/wp-config.php
+    #rm -rf /var/www/wordpress/wp-config-sample.php
+    #mv ./../conf/wp-config.php /var/www/wordpress/wp-config.php
 
 	rm -rf /etc/php/7.3/fpm/pool.d/www.conf
-	mv ../conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+	mv /var/www/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 	#Inport env variables in the config file
-	# cd /var/www/wordpress
-	# sed -i "s/username_here/$WP_USER/g" wp-config-sample.php
-	# sed -i "s/password_here/$WP_PASSWORD/g" wp-config-sample.php
-	# sed -i "s/localhost/$WP_DB_HOST/g" wp-config-sample.php
-	# sed -i "s/database_name_here/$WP_DB_NAME/g" wp-config-sample.php
-	# mv wp-config-sample.php wp-config.php
+	cd /var/www/wordpress
+	sed -i "s/username_here/$WP_USER/g" wp-config-sample.php
+	sed -i "s/password_here/$WP_PASSWORD/g" wp-config-sample.php
+	sed -i "s/localhost/$WP_DB_HOST/g" wp-config-sample.php
+	sed -i "s/database_name_here/$WP_DB_NAME/g" wp-config-sample.php
+	mv wp-config-sample.php wp-config.php
 fi
 
 exec "$@"
