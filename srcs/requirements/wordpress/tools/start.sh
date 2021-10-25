@@ -15,10 +15,10 @@ else
 
 	#Update configuration file
     rm -rf /var/www/wordpress/wp-config-sample.php
-    mv ./conf/wp-config.php /var/www/wordpress
+    mv ../conf/wp-config.php /var/www/wordpress
 
 	rm -rf /etc/php/7.3/fpm/pool.d/www.conf
-	mv ./conf/www.conf /etc/php/7.3/fpm/pool.d/
+	mv ../conf/www.conf /etc/php/7.3/fpm/pool.d/
 
 	#Inport env variables in the config file
 	cd /var/www/wordpress
