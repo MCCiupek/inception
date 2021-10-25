@@ -24,7 +24,7 @@ COPY		./tools/create_db.sh /usr/local/bin/
 RUN			chmod +rw /usr/local/bin/create_db.sh
 
 COPY    ./conf/db.sql /usr/local/bin/
-COPY		./conf/my.cnf /etc/mysql/my.cnf
+#COPY		./conf/my.cnf /etc/mysql/my.cnf
 RUN			chmod +x /usr/local/bin/db.sql
 
 RUN			chmod 777 /usr/local/bin/create_db.sh
