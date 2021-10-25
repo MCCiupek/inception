@@ -17,6 +17,8 @@ RUN apt-get install -y \
     tar
 
 # Copy config file
+COPY . .
+
 #COPY ./conf/www.conf /var/www/www.conf
 COPY ./conf /var/www/
 RUN chmod 777 /var/www/www.conf
