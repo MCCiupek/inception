@@ -9,6 +9,11 @@ echo "wait 15s"
 sleep 15
 
 echo "ajout de la db"
+
+echo "------ cat sock -------"
+cat /var/run/mysqld/mysqld.sock
+echo "----------------"
+
 sleep 2
 mysql -e "CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};"
 mysql -e "CREATE USER IF NOT EXISTS ${WP_USER}@'%' IDENTIFIED BY '${WP_USER_PASSWORD}';"
