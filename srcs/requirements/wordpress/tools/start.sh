@@ -7,7 +7,7 @@
 	#Download wordpress
 	wget https://wordpress.org/latest.tar.gz
 	tar -xzvf latest.tar.gz
-	rm -rf latest.tar.gz
+	rm -rf latest.tar.gz*
     #mkdir /var/www
     #mv -f wordpress /var/www/
     chmod 755 -R /var/www/wordpress
