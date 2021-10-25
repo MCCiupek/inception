@@ -12,17 +12,11 @@ RUN 		apt-get update && apt-get -y upgrade
 RUN 		apt-get install -y mariadb-server
 
 # purge and re-create /var/lib/mysql with correct ownership
-# RUN \
-#   rm -rf /var/lib/apt/lists/* \
-#   && mkdir -p /var/run/mysqld \
-#   && chown -R mysql:mysql /var/run/mysqld \
-#   && chmod 777 /var/run/mysqld
-
 RUN \
   rm -rf /var/lib/apt/lists/* \
-  && mkdir -p /var/lib/mysqld \
-  && chown -R mysql:mysql /var/lib/mysqld \
-  && chmod 777 /var/lib/mysqld
+  && mkdir -p /var/run/mysqld \
+  && chown -R mysql:mysql /var/run/mysqld \
+  && chmod 777 /var/run/mysqld
 
 # Copy config files
 COPY		./tools/create_db.sh /usr/local/bin/
