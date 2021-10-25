@@ -1,9 +1,9 @@
 #!/bin/sh
 
-if [ -f ./wordpress/wp-config.php ]
-then
-	echo "wordpress already downloaded"
-else
+#if [ -f ./wordpress/wp-config.php ]
+#then
+#	echo "wordpress already downloaded"
+#else
 	#Download wordpress
 	wget https://wordpress.org/latest.tar.gz
 	tar -xzvf latest.tar.gz
@@ -27,6 +27,6 @@ else
 	sed -i "s/localhost/$WP_DB_HOST/g" wp-config-sample.php
 	sed -i "s/database_name_here/$WP_DB_NAME/g" wp-config-sample.php
 	mv wp-config-sample.php wp-config.php
-fi
+#fi
 
 exec "$@"
