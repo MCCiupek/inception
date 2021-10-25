@@ -13,6 +13,12 @@ RUN 		apt-get install -y \
   mariadb-server \
   mariadb-client
 
+RUN \
+  rm -rf /var/lib/apt/lists/* \
+  && mkdir -p /var/run/mysqld \
+  && chown -R mysql:mysql /var/run/mysqld \
+  && chmod 777 /var/run/mysqld
+
 COPY ./conf/mariadb.cnf /etc/mysql/mariadb.conf.d/
 COPY ./conf/mariadb.sql /
 
