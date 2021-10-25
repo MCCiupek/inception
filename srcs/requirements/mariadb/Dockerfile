@@ -28,6 +28,7 @@ RUN \
 
 COPY tools/create_db.sh /bin/
 COPY conf/my.cnf /etc/mysql/my.cnf
+RUN  rm -rf /etc/my.cnf ~/.my.cnf
 
 RUN chmod 775 /bin/create_db.sh
 RUN chmod 775 /etc/mysql/my.cnf
