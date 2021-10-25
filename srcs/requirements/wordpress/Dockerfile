@@ -25,7 +25,7 @@ RUN mkdir -p /run/php
 
 # Launch wordpress installation
 COPY ./tools/start.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/start.sh
+RUN chmod 777 /usr/local/bin/start.sh
 
 ENTRYPOINT ["sh", "start.sh"]
 
