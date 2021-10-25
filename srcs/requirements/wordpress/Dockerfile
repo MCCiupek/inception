@@ -19,6 +19,7 @@ RUN apt-get install -y \
 # Copy config file
 #COPY ./conf/www.conf /var/www/www.conf
 COPY ./conf /var/www/
+RUN chmod 777 /var/www/www.conf
 
 # Create the folder to enable php start
 RUN mkdir -p /run/php
@@ -27,7 +28,7 @@ RUN mkdir -p /run/php
 COPY ./tools/start.sh /usr/local/bin/
 RUN chmod 777 /usr/local/bin/start.sh
 
-ENTRYPOINT ["sh", "start.sh"]
+ENTRYPOINT ["start.sh"]
 
 # Expose ports
 EXPOSE 9000
