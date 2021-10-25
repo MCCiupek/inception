@@ -27,7 +27,7 @@ RUN mkdir -p /run/php
 COPY ./tools/start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start.sh
 
-ENTRYPOINT ["/usr/local/bin/start.sh"]
+ENTRYPOINT ["sh", "start.sh"]
 
 # Expose ports
 EXPOSE 9000
