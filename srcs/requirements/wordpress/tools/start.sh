@@ -9,7 +9,7 @@ else
 	tar -xzvf latest.tar.gz
 	rm -rf latest.tar.gz
     #mkdir /var/www
-    mv -f wordpress /var/www/
+    #mv -f wordpress /var/www/
     chmod 755 -R /var/www/wordpress
     chown -R www-data:www-data /var/www/wordpress
 
@@ -18,10 +18,12 @@ else
     #mv ./../conf/wp-config.php /var/www/wordpress/wp-config.php
 
 	rm -rf /etc/php/7.3/fpm/pool.d/www.conf
-	mv /var/www/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+	#mv /var/www/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+    mv www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 	#Inport env variables in the config file
-	cd /var/www/wordpress
+	#cd /var/www/wordpress
+    cd wordpress
 	sed -i "s/username_here/$WP_USER/g" wp-config-sample.php
 	sed -i "s/password_here/$WP_PASSWORD/g" wp-config-sample.php
 	sed -i "s/localhost/$WP_DB_HOST/g" wp-config-sample.php
