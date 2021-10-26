@@ -29,7 +29,9 @@ RUN 	openssl req -x509 -nodes -days 1 -newkey rsa:2048 		\
 		-out etc/ssl/certs/nginx-cert.crt
 
 # start nginx
-CMD [ "nginx", "-g", "daemon off;" ]
+COPY 	./tools/entrypoint.sh /entrypoint.sh
+ENTRYPOINT [ "sh", "entrypoint.sh"]
+# CMD [ "nginx", "-g", "daemon off;" ]
 
 # Expose ports
 EXPOSE 443
