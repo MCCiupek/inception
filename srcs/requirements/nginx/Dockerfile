@@ -17,7 +17,7 @@ RUN		apt-get install -y \
 
 # nginx config
 COPY    conf/nginx.conf /etc/nginx/conf.d/default.conf
-RUN		rm -rf /etc/nginx/nginx.conf
+# RUN		rm -rf /etc/nginx/nginx.conf
 # COPY	conf/nginx.conf /etc/nginx/sites-available/site.conf
 #RUN		ln -s /etc/nginx/sites-available/site.conf /etc/nginx/sites-enabled/site.conf
 RUN		chown -R www-data:www-data /var/www
