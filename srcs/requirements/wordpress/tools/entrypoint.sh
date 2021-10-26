@@ -3,6 +3,7 @@
 function wait_for_db()
 {
 	i=1
+    echo "My host name is: $WP_DB_HOST\n"
 	while ! mysql -h$WP_DB_HOST -P${MYSQL_PORT} -u$MYSQL_USER -p$MYSQL_PASSWORD; do
 		if [ $i -ge 60 ]; then
 			echo "Failed to connect to mariadb\n"
