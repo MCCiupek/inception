@@ -6,17 +6,17 @@ volumes:
     driver_opts:
       o: bind
       type: volume
-      device: /home/user42/data/database
+      device: /home/mciupek/data/database
   wp_volume:
     driver: local
     driver_opts:
       o: bind
       type: volume
-      device: /home/user42/data/website
+      device: /home/mciupek/data/website
 
 services:
   mysql:
-    image: mariadb
+    image: mariadb:v0
     container_name: mariadb
     env_file: .env
     build:
@@ -29,10 +29,10 @@ services:
     #  - ./requirements/mariadb/conf/mariadb.cnf:/etc/mysql/conf
     restart: on-failure
     networks:
-      - localhost
+      - network
 
   wordpress:
-    image: wordpress
+    image: wordpress:v0
     container_name: wordpress
     depends_on:
       - mysql
@@ -49,10 +49,10 @@ services:
     working_dir: /var/www
     restart: on-failure
     networks:
-      - localhost
+      - network
 
   nginx:
-    image: nginx
+    image: nginx:v0
     container_name: nginx
     depends_on: 
       - wordpress
@@ -66,8 +66,8 @@ services:
       - "443:443"
     restart: on-failure
     networks:
-      - localhost
+      - network
 
 networks:
-  localhost:
-    name: inet
+  network:
+    name: network
