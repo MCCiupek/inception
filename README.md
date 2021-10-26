@@ -96,7 +96,9 @@ If you get the following error message : Docker compose up : error while fecthin
 
 "Cannot start service nginx: unable to find user www:no matching entries in passwd file": launch with 
 ``docker-compose up --build``
-  
+
+``Error 502: Bad Gateway``: resolve by changing the location of the ``www.conf`` file in wordpress container to ``/etc/php/7.3/fpm/pool.d/www.conf``
+
 ## Sources
 
 * [Docker Basics](https://vsupalov.com/6-docker-basics/)
