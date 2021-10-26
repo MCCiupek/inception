@@ -22,9 +22,9 @@
 /** The name of the database for WordPress */
 define( 'DB_NAME', getenv('MYSQL_DATABASE'));
 /** MySQL database username */
-define( 'DB_USER', getenv('WP_ADMIN'));
+define( 'DB_USER', getenv('WP_USER'));
 /** MySQL database password */
-define('DB_PASSWORD', getenv('WP_ADMIN_PASSWORD'));
+define('DB_PASSWORD', getenv('WP_USER_PASSWORD'));
 /** MySQL hostname */
 define('DB_HOST', getenv('WP_DB_HOST').':'.getenv('MYSQL_PORT'));
 /** Database Charset to use in creating database tables. */

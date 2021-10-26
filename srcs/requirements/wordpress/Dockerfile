@@ -27,7 +27,7 @@ CMD         [ "bash", "/install_wp.sh" ]
 
 # Copy config file
 # RUN         rm -f /var/www/wordpress/wp-config-sample.php
-COPY        ./conf/wp-config.php /var/www/wordpress/
+COPY        ./conf/wp-config.php /var/www/wordpress/wp-config.php
 COPY		./conf/php-fpm.conf /etc/php7/php-fpm.conf
 COPY		./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
