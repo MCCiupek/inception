@@ -18,13 +18,15 @@ RUN         apt-get install -y \
                 wget
 
 # install wordpress
-RUN         rm -rf /var/www/*.tar.gz
-ADD         https://wordpress.org/latest.tar.gz /var/www/
-RUN         cd /var/www && tar -xzvf *.tar.gz
-RUN         rm -rf /var/www/*.tar.gz
+# RUN         rm -rf /var/www/*.tar.gz
+# ADD         https://wordpress.org/latest.tar.gz /var/www/
+# RUN         cd /var/www && tar -xzvf *.tar.gz
+# RUN         rm -rf /var/www/*.tar.gz
+COPY        ./tools/install_wp.sh /install_wp.sh
+CMD         [ "bash", "/install_wp.sh" ]
 
 # Copy config file
-RUN         rm -f /var/www/wordpress/wp-config-sample.php
+# RUN         rm -f /var/www/wordpress/wp-config-sample.php
 COPY        ./conf/wp-config.php /var/www/wordpress/
 COPY		./conf/php-fpm.conf /etc/php7/php-fpm.conf
 COPY		./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
