@@ -18,7 +18,7 @@ services:
   mysql:
     image: mariadb:v0
     container_name: mariadb
-    env_file: .env
+    env_file: ./.env
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
@@ -34,6 +34,7 @@ services:
   wordpress:
     image: wordpress:v0
     container_name: wordpress
+    env_file: ./.env
     depends_on:
       - mysql
     build:
@@ -54,6 +55,7 @@ services:
   nginx:
     image: nginx:v0
     container_name: nginx
+    env_file: ./.env
     depends_on: 
       - wordpress
     build:
