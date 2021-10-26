@@ -22,6 +22,7 @@ COPY    conf/nginx.conf /etc/nginx/conf.d/default.conf
 # COPY	conf/nginx.conf /etc/nginx/sites-available/site.conf
 #RUN		ln -s /etc/nginx/sites-available/site.conf /etc/nginx/sites-enabled/site.conf
 RUN		chown -R www-data:www-data /var/www
+RUN		chmod -R 755 /var/www
 
 # SSL certificates creation
 RUN 	openssl req -x509 -nodes -days 1 -newkey rsa:2048 		\
