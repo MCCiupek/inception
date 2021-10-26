@@ -26,7 +26,7 @@ RUN         rm -rf /var/www/*.tar.gz
 RUN         rm -f /var/www/wordpress/wp-config-sample.php
 COPY        ./conf/wp-config.php /var/www/wordpress/
 COPY		./conf/php-fpm.conf /etc/php7/php-fpm.conf
-COPY		./conf/www.conf /etc/php7/php-fpm.d/www.conf
+COPY		./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 # Create the folder to enable php start
 RUN         mkdir -p /run/php
