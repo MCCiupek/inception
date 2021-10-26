@@ -17,18 +17,20 @@ RUN         apt-get install -y \
                 tar
 
 # install wordpress
-RUN         rm -rf *.tar.gz
+RUN         rm -rf /var/www/*.tar.gz
 ADD         https://wordpress.org/latest.tar.gz /var/www/
 RUN         cd /var/www && tar -xzvf *.tar.gz
-RUN         rm -rf *.tar.gz
+RUN         rm -rf /var/www/*.tar.gz
 
 # Copy config file
 RUN         rm -f /var/www/wordpress/wp-config-sample.php
 COPY        ./conf/wp-config.php /var/www/wordpress/
+COPY		./conf/php-fpm.conf /etc/php7/php-fpm.conf
 COPY		./conf/www.conf /etc/php7/php-fpm.d/www.conf
 
 # Create the folder to enable php start
 RUN         mkdir -p /run/php
+RUN			mkdir /var/log/php-fpm 
 
 # Expose ports
 EXPOSE      9000
