@@ -16,6 +16,7 @@ RUN		apt-get install -y \
             openssl
 
 # nginx config
+RUN		mkdir -p /run/nginx
 COPY    conf/nginx.conf /etc/nginx/conf.d/default.conf
 # RUN		rm -rf /etc/nginx/nginx.conf
 # COPY	conf/nginx.conf /etc/nginx/sites-available/site.conf
