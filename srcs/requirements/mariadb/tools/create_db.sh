@@ -2,11 +2,18 @@
 
 echo "Database initialization"
 
-mysqld_safe &
-sleep 2
+mariadbd &
 
-echo "wait 15s"
-sleep 15
+if ! mysqladmin --wait=30 ping; then
+	printf "Could not ping mariadb for 30 seconds, runtime configuration is not possible.\n"
+	exit 1
+fi
+
+# mysqld_safe &
+# sleep 2
+
+# echo "wait 15s"
+# sleep 15
 
 echo "ajout de la db"
 sleep 2
