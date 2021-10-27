@@ -14,7 +14,7 @@ RUN         apt-get install -y \
                 php7.3 \
                 php-fpm \
                 php-mysql \
-                mysql-client \
+                mariadb-client \
                 tar \
                 wget
 
