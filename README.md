@@ -99,6 +99,8 @@ If you get the following error message : Docker compose up : error while fecthin
 
 ``Error 502: Bad Gateway``: resolve by changing the location of the ``www.conf`` file in wordpress container to ``/etc/php/7.3/fpm/pool.d/www.conf``
 
+Database error: set .env with MYSQL_NAME=mariadb
+
 ## Sources
 
 * [Docker Basics](https://vsupalov.com/6-docker-basics/)
