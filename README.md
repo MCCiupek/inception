@@ -2,6 +2,11 @@
 This project aims to broaden your knowledge of system administration by using Docker. You will virtualize several Docker images, creating them in your new personal virtual machine.
 The objective of inception is to use docker-compose to create a LEMP stack with Wordpress. 
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/51337012/139266049-e4c45c66-c798-4b8a-987a-6879315257a1.png" />
+ </p>
+
+
 ## Objectives
 * System administration
 
@@ -109,6 +114,7 @@ Database error: set .env with MYSQL_NAME=mariadb
 * [How to Build Docker Images with Dockerfile](https://linuxize.com/post/how-to-build-docker-images-with-dockerfile/)
 * [Using volumes in Docker Compose](https://devopsheaven.com/docker/docker-compose/volumes/2018/01/16/volumes-in-docker-compose.html)
 * [How To Set Up Laravel, Nginx, and MySQL With Docker Compose on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose-on-ubuntu-20-04)
+* [How To Install WordPress With Docker Compose](https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-docker-compose)
 
 ## 
 Grade: /100
