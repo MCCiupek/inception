@@ -17,7 +17,7 @@ RUN 		apt-get install -y \
 RUN \
         rm -rf /var/lib/apt/lists/* \
         && mkdir -p /var/run/mysqld \
-        && chown -R mysql:mysql /var/run/mysqld \
+        && chown -R www-data:www-data /var/run/mysqld \
         && chmod 777 /var/run/mysqld
 
 # Copy config files
