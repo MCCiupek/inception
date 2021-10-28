@@ -5,8 +5,7 @@
 # Pull base image.
 FROM        debian:buster
 
-#LABEL maintainer="mciupek <mciupek@student.42.fr>"
-
+# update the software repository
 RUN         apt-get update && apt-get -y upgrade
 
 # install php
@@ -19,18 +18,10 @@ RUN         apt-get install -y \
                 wget
 
 # install wordpress
-# RUN         rm -rf /var/www/*.tar.gz
-# ADD         https://wordpress.org/latest.tar.gz /var/www/
-# RUN         cd /var/www && tar -xzvf *.tar.gz
-# RUN         rm -rf /var/www/*.tar.gz
 COPY        ./tools/install_wp.sh /install_wp.sh
 CMD         [ "bash", "/install_wp.sh" ]
 
 # Copy config file
-# RUN         rm -f /var/www/wordpress/wp-config-sample.php
-# COPY        ./conf/wp-config.php /var/www/wordpress/wp-config.php
-# RUN         chmod -R 775 /var/www/wordpress/
-# COPY		./conf/php-fpm.conf /etc/php7/php-fpm.conf
 COPY		./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 # Create the folder to enable php start
@@ -43,4 +34,3 @@ EXPOSE      9000
 # Define default command
 COPY        ./tools/entrypoint.sh /entrypoint.sh
 ENTRYPOINT  [ "bash", "/entrypoint.sh" ]
-#CMD ["/usr/sbin/php-fpm7.3", "-F"]
