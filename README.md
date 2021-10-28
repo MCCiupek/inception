@@ -2,6 +2,11 @@
 This project aims to broaden your knowledge of system administration by using Docker. You will virtualize several Docker images, creating them in your new personal virtual machine.
 The objective of inception is to use docker-compose to create a LEMP stack with Wordpress. 
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/51337012/139266049-e4c45c66-c798-4b8a-987a-6879315257a1.png" />
+ </p>
+
+
 ## Objectives
 * System administration
 
