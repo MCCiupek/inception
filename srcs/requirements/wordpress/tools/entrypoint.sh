@@ -12,18 +12,18 @@
 # echo "Create user"
 # wp user create $WP_USER $WP_USER@email.com --role="author" --user_pass="$WP_USER_PASSWORD" --path="/var/www"
 
-wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /usr/local/bin/wp
-chmod +x /usr/local/bin/wp
+# wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /usr/local/bin/wp
+# chmod +x /usr/local/bin/wp
 
-echo "Create user : $WP_USER"
-adduser $WP_USER
-su $WP_USER
-wp config create --dbname="$WP_DB_NAME" \
-    --dbuser="$WP_USER" \
-    --dbpass="$WP_USER_PASSWORD" \
-    --dbhost="$WP_DB_HOST" \
-    --path=/var/www/ \
-    --dbprefix="$WP_TABLE_PREFIX"
+# echo "Create user : $WP_USER"
+# adduser $WP_USER
+# su $WP_USER
+# wp config create --dbname="$WP_DB_NAME" \
+#     --dbuser="$WP_USER" \
+#     --dbpass="$WP_USER_PASSWORD" \
+#     --dbhost="$WP_DB_HOST" \
+#     --path=/var/www/ \
+#     --dbprefix="$WP_TABLE_PREFIX"
 
 echo "Starting php-fpm7.3..."
 /usr/sbin/php-fpm7.3 -F

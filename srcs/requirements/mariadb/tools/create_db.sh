@@ -16,6 +16,9 @@ mysql -e "CREATE USER IF NOT EXISTS ${WP_USER}@'%' IDENTIFIED BY '${WP_USER_PASS
 # mysql -e "CREATE USER IF NOT EXISTS ${WP_ADMIN}@'%' IDENTIFIED BY '${WP_ADMIN_PASSWORD}';"
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO ${WP_ADMIN}@'%' IDENTIFIED BY '${WP_ADMIN_PASSWORD}';"
 mysql -e "GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO ${WP_USER}@'%';"
+mysql -e "INSERT INTO wordpress.wp_users 
+(user_login,user_pass,user_email) 
+VALUES ('${WP_USER}'@'%','${WP_USER_PASSWORD}','${WP_USER}@42.fr');"
 mysql -e "FLUSH PRIVILEGES;"
 
 echo "Database shutdown"
