@@ -16,7 +16,8 @@ wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -
 chmod +x /usr/local/bin/wp
 
 echo "Create user : $WP_USER"
-sudo -u $WP_USER -i wp config create --dbname="$WP_DB_NAME" \
+#sudo -u $WP_USER -i 
+wp config create --dbname="$WP_DB_NAME" \
     --dbuser="$WP_USER" \
     --dbpass="$WP_USER_PASSWORD" \
     --dbhost="$WP_DB_HOST" \
