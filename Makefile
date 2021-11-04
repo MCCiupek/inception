@@ -2,6 +2,8 @@
 
 NAME				= inception
 LOGIN				= mciupek
+SITE				= $(LOGIN).42.fr
+USER				= root42
 VOLUMES_PATH		= /home/$(LOGIN)/data
 WP_HOST_VOLUME_PATH	= $(VOLUMES_PATH)/website
 DB_HOST_VOLUME_PATH	= $(VOLUMES_PATH)/database
@@ -37,4 +39,11 @@ volumes:
 
 re: vdown all
 
-.PHONY: build down vdown all re eval services volumes
+curl:
+	curl -k $(SITE)
+
+db:
+	docker exec -it mariadb bash && \
+	mysql -u $(USER) -p
+
+.PHONY: build down vdown all re eval services volumes curl db
