@@ -15,7 +15,7 @@ all: $(NAME)
 build:
 	$(COMPOSE) build
 
-$(NAME): down services volumes
+$(NAME): services volumes
 	$(COMPOSE) up -d --build
 
 down: 
