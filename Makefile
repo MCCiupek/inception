@@ -15,13 +15,13 @@ all: $(NAME)
 build:
 	$(COMPOSE) build
 
-$(NAME): clean services volumes
+$(NAME): down services volumes
 	$(COMPOSE) up -d --build
 
-clean: 
+down: 
 	$(COMPOSE) down
 
-fclean:
+vdown:
 	$(COMPOSE) down -v
 
 eval:
@@ -35,6 +35,6 @@ volumes:
 	mkdir -p $(WP_HOST_VOLUME_PATH)
 	mkdir -p $(DB_HOST_VOLUME_PATH)
 
-re: fclean all
+re: vdown all
 
-.PHONY: build clean fclean all re eval services volumes
+.PHONY: build down vdown all re eval services volumes
