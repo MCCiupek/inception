@@ -26,7 +26,6 @@ services:
       - "3306:3306"
     volumes:
       - mysql_volume:/var/lib/mysql
-    #  - ./requirements/mariadb/conf/mariadb.cnf:/etc/mysql/conf
     restart: on-failure
     networks:
       - network
@@ -42,7 +41,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - wp_volume:/var/www
-    #  - ./requirements/wordpress/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     depends_on:
       - mysql
     ports:
@@ -63,7 +61,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - wp_volume:/var/www
-    #  - ./requirements/nginx/conf/nginx.conf:/etc/nginx/conf
     ports:
       - "443:443"
     restart: on-failure

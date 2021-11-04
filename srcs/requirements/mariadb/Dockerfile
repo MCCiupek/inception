@@ -31,7 +31,6 @@ RUN     chmod -R 775 /var/lib/mysql
 
 # Start server
 ENTRYPOINT [ "bin/create_db.sh" ]
-# CMD ["mysqld", "--bind-address=0.0.0.0"]
 
 # Expose ports
 EXPOSE 3306
