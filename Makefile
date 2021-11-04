@@ -43,7 +43,7 @@ curl:
 	curl -k $(SITE)
 
 db:
-	docker exec -it mariadb bash && \
+	docker exec -it mariadb bash
 	mysql -u $(USER) -p
 
 .PHONY: build down vdown all re eval services volumes curl db
