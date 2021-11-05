@@ -118,4 +118,4 @@ Database error: set .env with MYSQL_NAME=mariadb
 * [Ubuntu 20.04 – Installation de WordPress avec Nginx, PHP-FPM, MariaDB et SSL/TLS](https://howto.wared.fr/installation-wordpress-ubuntu-nginx/)
 
 ## 
-Grade: /100
+Grade: 100/100
